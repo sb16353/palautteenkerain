@@ -1,0 +1,37 @@
+services:
+
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: feedback
+      POSTGRES_PASSWORD: feedback
+      POSTGRES_DB: feedback
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql+psycopg://feedback:feedback@db:5432/feedback
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/app:/app/app
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run dev -- --host
+
+volumes:
+  postgres_data:

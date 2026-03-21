@@ -1,20 +1,18 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager
+from db.database import create_db_and_tables
+from routers import feedback_router
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    yield create_db_and_tables()
 
-feedback = []
-
-class Feedback(BaseModel):
-    event_id: int
-    rating: int
-    comment: str
-
-@app.post("/feedback")
-def submit_feedback(f: Feedback):
-    feedback.append(f)
-    return {"status": "ok"}
-
-@app.get("/feedback")
-def get_feedback():
-    return feedback
+app = FastAPI(lifespan=lifespan)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+app.include_router(feedback_router.router)

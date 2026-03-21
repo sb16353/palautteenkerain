@@ -1,0 +1,51 @@
+#input-room-code {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#input-room-code button {
+    margin: 20px;
+}
+
+#feedback-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#feedback-button-container {
+    display: flex;
+    flex-direction: row;
+}
+
+@media only screen and (max-width: 760px) {
+    #feedback-button-container {
+        flex-direction: column;
+    }
+}
+
+.feedback-button {
+    border-radius: 50%;
+    font-size: 5em;
+    padding-bottom: 0.75rem;
+    margin: 10px;
+}
+
+#r1.feedback-button {
+    background-color:red;
+}
+#r2.feedback-button {
+    background-color:orange;
+}
+#r3.feedback-button {
+    background-color:yellow;
+}
+#r4.feedback-button {
+    background-color:yellowgreen;
+}
+#r5.feedback-button {
+    background-color:green;
+}

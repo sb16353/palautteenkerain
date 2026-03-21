@@ -1,5 +1,4 @@
-fastapi
+fastapi[standard]
 uvicorn[standard]
-sqlalchemy
 psycopg[binary]
-pydantic
+sqlmodel

@@ -3,9 +3,13 @@ services:
   db:
     image: postgres:18
     environment:
-      POSTGRES_USER: feedback
-      POSTGRES_PASSWORD: feedback
-      POSTGRES_DB: feedback
+      POSTGRES_USER_FILE: /run/secrets/db_user
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRES_DB_FILE: /run/secrets/db_name
+    secrets:
+      - db_user
+      - db_password
+      - db_name
     volumes:
       - postgres_data:/var/lib/postgresql
     ports:
@@ -15,12 +19,17 @@ services:
     build: ./backend
     depends_on:
       - db
+    secrets:
+      - db_user
+      - db_password
+      - db_name
     environment:
-      DATABASE_URL: postgresql+psycopg://feedback:feedback@db:5432/feedback
+      DB_HOST: db
+      DB_PORT: 5432
     ports:
       - "8000:8000"
     volumes:
-      - ./backend/app:/app/app
+      - ./backend/app:/app
 
   frontend:
     build: ./frontend
@@ -32,6 +41,14 @@ services:
       - ./frontend:/app
       - /app/node_modules
     command: npm run dev -- --host
+
+secrets:
+  db_user:
+    file: ./secrets/db_user.txt
+  db_password:
+    file: ./secrets/db_password.txt
+  db_name:
+    file: ./secrets/db_name.txt
 
 volumes:
   postgres_data:

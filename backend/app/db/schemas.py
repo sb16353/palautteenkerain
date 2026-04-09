@@ -1,12 +1,15 @@
-from sqlmodel import SQLModel, Field
+from sqlmodel import Field
+from db.models import RoomBase
+from pydantic import BaseModel
 
-class FeedbackCreate(SQLModel):
+class FeedbackCreate(BaseModel):
     room_id: str
     rating: int = Field(ge=1, le=5)
+    comment: str
 
-
-class FeedbackRead(SQLModel):
-    room_id: str
-    rating: int
+class FeedbackRead(FeedbackCreate):
     average: float
     count: int
+
+class RoomIn(RoomBase):
+    pass

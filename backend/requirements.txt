@@ -2,3 +2,5 @@ fastapi[standard]
 uvicorn[standard]
 psycopg[binary]
 sqlmodel
+python-jose
+bcrypt

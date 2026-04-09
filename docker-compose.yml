@@ -23,6 +23,7 @@ services:
       - db_user
       - db_password
       - db_name
+      - secret_key
     environment:
       DB_HOST: db
       DB_PORT: 5432
@@ -49,6 +50,8 @@ secrets:
     file: ./secrets/db_password.txt
   db_name:
     file: ./secrets/db_name.txt
+  secret_key:
+    file: ./secrets/secret_key.txt
 
 volumes:
   postgres_data:

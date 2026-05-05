@@ -12,7 +12,7 @@ export default function Routing() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/:errorMsg?" element={<Home />} />
           <Route
             path="/dashboard"
             element={

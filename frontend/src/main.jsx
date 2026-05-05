@@ -6,7 +6,6 @@ import './i18n';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Routing>
-    </Routing>
+    <Routing/>
   </StrictMode>,
 )

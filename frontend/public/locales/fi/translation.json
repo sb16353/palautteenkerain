@@ -10,7 +10,7 @@
     "Invalid credentials": "Virheellinen käyttäjänimi tai salasana",
     "thanks": "Kiitos palautteestasi!",
     "redirect-1": "Sinut ohjataan takaisin ",
-    "redirect-2": "aloitussivulle",
+    "redirect-2": "edelliselle sivulle",
     "redirect-3": ":n sekunnin kuluttua...",
     "Room": "Huone",
     "Average": "Keskiarvo",
@@ -21,5 +21,13 @@
     "Password should be atleast 5 characters long": "Salasanan pitää olla vähintään viisi merkkiä pitkä",
     "Dashboard": "Hallinnoi huoneita",
     "room-id-empty": "Sinun täytyy syöttää huonekoodi, ennen kuin voit antaa palautetta.",
-    "Log out": "Kirjaudu ulos"
+    "Log out": "Kirjaudu ulos",
+    "optional-feedback-field" : "Vapaaehtoinen palaute",
+    "You can only update your rating once per 15 seconds" : "Voit päivittää palautettasi vain 15 sekunnin välein",
+    "Your Rooms": "Huoneesi",
+    "Create Room" : "Luo huone",
+    "room-not-found" : "Huonetta ei löydy",
+    "room-load-error" : "Huoneita ladatessa tapahtui virhe",
+    "room-create-error" : "Huoneita luodessa tapahtui virhe",
+    "created" : "luotu"
 }

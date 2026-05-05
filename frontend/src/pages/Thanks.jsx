@@ -26,8 +26,10 @@ export default function Thanks() {
                 <pre>{t('redirect-1')}</pre>
                 <a href="#" onClick={e => {
                     e.preventDefault();
-                    navigate("/");
-                }}><pre>{t('redirect-2')}</pre></a>
+                    navigate(-1);
+                }}>
+                    <pre>{t('redirect-2')}</pre>
+                </a>
                 <pre> {navTimer}{t('redirect-3')}</pre>
             </div>       
         </div>

@@ -8,11 +8,17 @@ export default function FeedbackView() {
   const { roomId } = useParams();
   const commentFieldId = useId();
   const commentRef = useRef("");
-
+  const [errorMsg, setErrorMsg] = useState("");
 
   const {t, i18n} = useTranslation();
 
+  const [submitting, setSubmitting] = useState(false);
+
   async function submitFeedback(rating) {
+    if (submitting) return;
+
+    setSubmitting(true);
+
     try {
       const comment = commentRef.current.value;
 
@@ -27,7 +33,10 @@ export default function FeedbackView() {
       navigate("/thanks");
     } catch (err) {
       console.error(err);
-      alert(t('Network error'));
+      setErrorMsg(t(err.message || 'An error occurred while submitting feedback'));
+    }
+    finally {
+      setSubmitting(false);
     }
   }
 
@@ -44,7 +53,7 @@ export default function FeedbackView() {
     }
 
     if (!data) {
-      navigate("/");
+      navigate("/?error_msg=room-not-found");
     }
     else {
       setRoomValidated(true);
@@ -59,6 +68,8 @@ export default function FeedbackView() {
     if (roomValidated) {
       return (<>
         <h1>{t('room-id-submit')}</h1>
+
+        <p>{errorMsg}</p>
 
         <div id="feedback-button-container">
           <button className="feedback-button" id="r5" onClick={() => submitFeedback(5)}>
@@ -87,7 +98,7 @@ export default function FeedbackView() {
       </>);
     }
 
-    return <h1>Loading...</h1>;
+    return <h1>...</h1>;
   }
 
   return (

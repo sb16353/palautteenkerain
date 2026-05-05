@@ -3,7 +3,7 @@ from datetime import datetime, timedelta, timezone
 from db.models import Feedback, Room
 from fastapi import HTTPException
 
-UPDATE_COOLDOWN = timedelta(minutes=1)
+UPDATE_COOLDOWN = timedelta(seconds=15)
 
 def get_feedback(session: Session, room_id: str, user_hash: str):
     return session.exec(
@@ -26,7 +26,7 @@ def create_or_update_feedback(session: Session, room_id: str, user_hash: str, ra
 
     if feedback:
         if now - feedback.updated_at.replace(tzinfo=timezone.utc) < UPDATE_COOLDOWN:
-            raise ValueError("You can only update your rating once per minute")
+            raise ValueError("You can only update your rating once per 15 seconds")
 
         feedback.rating = rating
         feedback.comment = comment

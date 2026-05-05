@@ -10,7 +10,7 @@
     "Invalid credentials": "Incorrect username or password",
     "thanks": "Thanks for your feedback!",
     "redirect-1": "You will be redirected to ",
-    "redirect-2": "the frontpage after",
+    "redirect-2": "the feedback page after",
     "redirect-3": " seconds...",
     "Room": "Room",
     "Average": "Average",
@@ -21,5 +21,11 @@
     "Password should be atleast 5 characters long": "Password should be atleast five characters long",
     "Dashboard": "Manage rooms",
     "room-id-empty": "You must enter a room ID to give feedback.",
-    "Log out": "Log out"
+    "Log out": "Log out",
+    "optional-feedback-field" : "Optional feedback",
+    "You can only update your rating once per 15 seconds" : "You can only update your rating once per 15 seconds",
+    "room-not-found" : "Room not found",
+    "room-load-error" : "An error occurred while loading rooms",
+    "room-create-error" : "An error occurred while creating a room",
+    "created" : "created"
 }

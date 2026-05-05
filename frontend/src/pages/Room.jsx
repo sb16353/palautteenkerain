@@ -11,7 +11,7 @@ export default function Room() {
 
   async function loadStats() {
     const data = await apiFetch(`/rooms/${roomId}`);
-    console.log(data);
+    //console.log(data);
     setStats(data);
   }
 

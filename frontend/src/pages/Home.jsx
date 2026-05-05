@@ -1,12 +1,15 @@
-import { useState, useRef,  Suspense } from 'react'
-import { useNavigate } from 'react-router'
+import { useState, useRef, useEffect,  Suspense } from 'react'
+import { useNavigate, useSearchParams } from 'react-router'
 import { useAuth } from '../auth/AuthContext';
 import { apiFetch } from '../api/client';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator'
+import LanguageSelector from '../components/LanguageSelector';
 
 function Home() {
   const navigate = useNavigate();
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const {t, i18n} = useTranslation();
 
@@ -14,12 +17,18 @@ function Home() {
 
   const [roomId, setRoomId] = useState('');
 
+  const [operationInProgress, setOperationInProgress] = useState(false);
+
   const usernameRef = useRef("");
   const passwordRef = useRef("");
 
   const { token, login, logout } = useAuth();
 
   async function handleLogin() {
+    if (operationInProgress) return;
+
+    setOperationInProgress(true);
+
     setErrorStr("");
 
     const username = validator.trim(usernameRef.current.value);
@@ -37,9 +46,17 @@ function Home() {
       setErrorStr(t(err.message || 'login-failed'));
       console.log(err);
     }
+    finally {
+      setOperationInProgress(false);
+    }
   }
 
   async function handleRegistration() {
+
+    if (operationInProgress) return;
+
+    setOperationInProgress(true);
+
     setErrorStr("");
 
     const username = validator.trim(usernameRef.current.value);
@@ -57,7 +74,16 @@ function Home() {
       setErrorStr(t(err.message || 'login-failed'));
       console.log(err);
     }
+    finally {
+      setOperationInProgress(false);
+    }
   }
+
+  useEffect(() => {
+    if (validator.trim(errorStr).length < 1) {
+      setErrorStr(t(searchParams.get('error_msg')));
+    } 
+  });
 
   //Displays controls for logging in / registering and the dashboard button
   function AuthControls() {
@@ -70,6 +96,7 @@ function Home() {
 
 
     return (<>
+      <LanguageSelector/>
       <div id="auth-inputs">
         <br/>
         <input placeholder={t('usr')} type="text" ref={usernameRef}/>

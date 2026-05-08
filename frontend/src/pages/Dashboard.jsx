@@ -1,12 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import { apiFetch } from "../api/client";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import validator from 'validator';
+import DeleteRoom from "../components/DeleteRoom";
+import { useError } from "../components/ErrorProvider";
 
 export default function Dashboard() {
 
-  const [errorMsg, setErrorMsg] = useState("");
+  const {errorMsg, setErrorMsg} = useError();
 
   const [rooms, setRooms] = useState([]);
 
@@ -17,6 +19,8 @@ export default function Dashboard() {
   const [operationInProgress, setOperationInProgress] = useState(false);
 
   const navigate = useNavigate();
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   async function loadRooms() {
     if (operationInProgress) return;
@@ -68,7 +72,7 @@ export default function Dashboard() {
         <h1>{t('Your Rooms')}</h1>
         <input className="dashboard-element" placeholder={t('room-id')} ref={roomIdRef}/>
         <button className="dashboard-element" onClick={createRoom}>{t('Create Room')}</button>
-
+        <p>{errorMsg}</p>
         {rooms.map(room => (
           <div className="dashboard-element" key={room.id}>
             <a 
@@ -84,12 +88,7 @@ export default function Dashboard() {
               {room.id}
             </a> 
             &nbsp;
-            <a 
-              href="#" 
-              aria-label={t('Delete room') + ' ' + room.id}
-            >
-              {t('delete')}
-            </a> 
+            <DeleteRoom roomId={room.id}/>
           </div>
         ))}
       </div>

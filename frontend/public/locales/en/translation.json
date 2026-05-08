@@ -27,5 +27,11 @@
     "room-not-found" : "Room not found",
     "room-load-error" : "An error occurred while loading rooms",
     "room-create-error" : "An error occurred while creating a room",
-    "created" : "created"
+    "created" : "created",
+    "room-delete-aria" : "Delete room",
+    "room-delete-confirm-aria" : "Confirm deletion of room",
+    "room-delete-cancel-aria" : "Cancel deletion of room",
+    "delete-confirm" : "Are you sure?",
+    "yes" : "Yes",
+    "no" : "No"
 }

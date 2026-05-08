@@ -4,7 +4,6 @@ import { useAuth } from '../auth/AuthContext';
 import { apiFetch } from '../api/client';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator'
-import LanguageSelector from '../components/LanguageSelector';
 
 function Home() {
   const navigate = useNavigate();
@@ -79,12 +78,6 @@ function Home() {
     }
   }
 
-  useEffect(() => {
-    if (validator.trim(errorStr).length < 1) {
-      setErrorStr(t(searchParams.get('error_msg')));
-    } 
-  });
-
   //Displays controls for logging in / registering and the dashboard button
   function AuthControls() {
     if (token) { 
@@ -96,7 +89,6 @@ function Home() {
 
 
     return (<>
-      <LanguageSelector/>
       <div id="auth-inputs">
         <br/>
         <input placeholder={t('usr')} type="text" ref={usernameRef}/>

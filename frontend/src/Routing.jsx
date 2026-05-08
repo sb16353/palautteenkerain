@@ -6,32 +6,37 @@ import Home from "./pages/Home"
 import Dashboard from "./pages/Dashboard"
 import Room from "./pages/Room"
 import FeedbackView from "./pages/FeedbackView"
+import LanguageSelector from "./components/LanguageSelector"
+import { ErrorMessage } from "./components/ErrorProvider";
 
 export default function Routing() {
   return (<>
     <BrowserRouter>
       <AuthProvider>
-        <Routes>
-          <Route path="/:errorMsg?" element={<Home />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/room/:roomId"
-            element={
-              <ProtectedRoute>
-                <Room />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/feedback/:roomId" element={<FeedbackView />} />
-          <Route path="/thanks" element={<Thanks />} />
-        </Routes>
+        <ErrorMessage>
+          <LanguageSelector/>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/room/:roomId"
+              element={
+                <ProtectedRoute>
+                  <Room />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/feedback/:roomId" element={<FeedbackView />} />
+            <Route path="/thanks" element={<Thanks />} />
+          </Routes>
+        </ErrorMessage>
       </AuthProvider>
     </BrowserRouter>
   </>)

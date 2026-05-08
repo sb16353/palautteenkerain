@@ -29,5 +29,12 @@
     "room-not-found" : "Huonetta ei löydy",
     "room-load-error" : "Huoneita ladatessa tapahtui virhe",
     "room-create-error" : "Huoneita luodessa tapahtui virhe",
-    "created" : "luotu"
+    "created" : "luotu",
+    "room-delete-aria" : "Poista huone",
+    "room-delete-confirm-aria" : "Varmista huoneen poistaminen",
+    "room-delete-cancel-aria" : "Peruuta huoneen poistaminen",
+    "delete-confirm" : "Oletko varma?",
+    "yes" : "Kyllä",
+    "no" : "Ei",
+    "Not Found" : "Ei löydetty"
 }

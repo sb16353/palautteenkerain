@@ -26,7 +26,7 @@ def create_or_update_feedback(session: Session, room_id: str, user_hash: str, ra
 
     if feedback:
         if now - feedback.updated_at.replace(tzinfo=timezone.utc) < UPDATE_COOLDOWN:
-            raise ValueError("You can only update your rating once per 15 seconds")
+            raise ValueError(f"You can only update your rating once per {UPDATE_COOLDOWN.total_seconds()} seconds")
 
         feedback.rating = rating
         feedback.comment = comment
@@ -50,7 +50,7 @@ def create_or_update_feedback(session: Session, room_id: str, user_hash: str, ra
 def get_room_stats(session: Session, room_id: str):
     feedback = session.exec(select(Feedback).where(Feedback.room_id == room_id)).all()
 
-    if not feedback:
+    if not feedback or len(feedback) == 0:
         return 0.0, 0, []
     
     results = [x.rating for x in feedback]

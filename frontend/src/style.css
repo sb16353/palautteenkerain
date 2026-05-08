@@ -45,6 +45,9 @@
 .dashboard-element {
     margin-top: 10px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 #input-room-code button {

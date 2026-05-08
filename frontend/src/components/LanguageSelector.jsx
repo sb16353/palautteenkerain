@@ -31,7 +31,8 @@ export default function LanguageSelector() {
                 {
                     position: "absolute",
                     top: CORNER_OFFSET,
-                    left: CORNER_OFFSET
+                    left: CORNER_OFFSET,
+                    zIndex: 10
                 }
             }
         >

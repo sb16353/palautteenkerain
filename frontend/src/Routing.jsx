@@ -6,15 +6,15 @@ import Home from "./pages/Home"
 import Dashboard from "./pages/Dashboard"
 import Room from "./pages/Room"
 import FeedbackView from "./pages/FeedbackView"
-import LanguageSelector from "./components/LanguageSelector"
-import { ErrorMessage } from "./components/ErrorProvider";
+import { ErrorProvider } from "./components/ErrorProvider";
+import CommonControls from "./components/CommonControls";
 
 export default function Routing() {
   return (<>
     <BrowserRouter>
       <AuthProvider>
-        <ErrorMessage>
-          <LanguageSelector/>
+        <ErrorProvider>
+          <CommonControls/>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route
@@ -36,7 +36,7 @@ export default function Routing() {
             <Route path="/feedback/:roomId" element={<FeedbackView />} />
             <Route path="/thanks" element={<Thanks />} />
           </Routes>
-        </ErrorMessage>
+        </ErrorProvider>
       </AuthProvider>
     </BrowserRouter>
   </>)

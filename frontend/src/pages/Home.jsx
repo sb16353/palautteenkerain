@@ -4,6 +4,7 @@ import { useAuth } from '../auth/AuthContext';
 import { apiFetch } from '../api/client';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator'
+import { useError } from '../components/ErrorProvider';
 
 function Home() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function Home() {
 
   const {t, i18n} = useTranslation();
 
-  const [errorStr, setErrorStr] = useState("");
+  const {errorMsg, setErrorMsg} = useError();
 
   const [roomId, setRoomId] = useState('');
 
@@ -28,7 +29,7 @@ function Home() {
 
     setOperationInProgress(true);
 
-    setErrorStr("");
+    setErrorMsg("");
 
     const username = validator.trim(usernameRef.current.value);
     const password = validator.trim(passwordRef.current.value);
@@ -42,7 +43,7 @@ function Home() {
       login(data.token);
     }
     catch (err) {
-      setErrorStr(t(err.message || 'login-failed'));
+      setErrorMsg(t(err.message || 'login-failed'));
       console.log(err);
     }
     finally {
@@ -56,7 +57,7 @@ function Home() {
 
     setOperationInProgress(true);
 
-    setErrorStr("");
+    setErrorMsg("");
 
     const username = validator.trim(usernameRef.current.value);
     const password = validator.trim(passwordRef.current.value);
@@ -70,7 +71,7 @@ function Home() {
       login(data.token);
     }  
     catch (err) {
-      setErrorStr(t(err.message || 'login-failed'));
+      setErrorMsg(t(err.message || 'login-failed'));
       console.log(err);
     }
     finally {
@@ -107,7 +108,7 @@ function Home() {
     setRoomId(validator.trim(roomId));
 
     if (roomId.length < 1)  {
-      setErrorStr(t('room-id-empty'));
+      setErrorMsg(t('room-id-empty'));
       return;
     }
 
@@ -121,9 +122,8 @@ function Home() {
           <h1>{t('title')}</h1>
           <input name="roomId" placeholder={t('room-id')} onChange={e => setRoomId(e.target.value)} ></input>
           <button onClick={navigateToFeedback} style={{marginTop: "10px"}}>{t('room-id-submit')}</button>
-          <AuthControls/>
-          <br/>  
-          <p>{errorStr}</p>
+          {!operationInProgress && <AuthControls/>}
+          <br/>
         </div>
       </Suspense>
     </>

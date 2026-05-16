@@ -20,21 +20,11 @@ export default function LanguageSelector() {
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
 
-    const CORNER_OFFSET = "24px";
-
     return (
         <select
             id={selectorId}
             value={currentLng}
             onChange={(e) => i18n.changeLanguage(e.target.value)}
-            style={ 
-                {
-                    position: "absolute",
-                    top: CORNER_OFFSET,
-                    left: CORNER_OFFSET,
-                    zIndex: 10
-                }
-            }
         >
             {languages.map((lng) => (
                 <option key={lng.code} value={lng.code}>

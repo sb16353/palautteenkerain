@@ -33,5 +33,7 @@
     "room-delete-cancel-aria" : "Cancel deletion of room",
     "delete-confirm" : "Are you sure?",
     "yes" : "Yes",
-    "no" : "No"
+    "no" : "No",
+    "back" : "Back",
+    "delete" : "Delete"
 }

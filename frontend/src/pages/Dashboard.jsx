@@ -48,9 +48,11 @@ export default function Dashboard() {
     try {
       const roomId = validator.trim(roomIdRef.current.value).replace(/\s+/g, "_").toLowerCase();
 
+      roomIdRef.current.value = "";
+
       const data = await apiFetch(`/rooms/${roomId}`, { method: "POST" });
 
-      setErrorMsg(t('Room') + ' ' + roomId + ' ' + t('create'))
+      setErrorMsg(`${t('Room')} "${roomId}" ${t('created')}`)
 
       loadRooms();
     }
@@ -72,7 +74,6 @@ export default function Dashboard() {
         <h1>{t('Your Rooms')}</h1>
         <input className="dashboard-element" placeholder={t('room-id')} ref={roomIdRef}/>
         <button className="dashboard-element" onClick={createRoom}>{t('Create Room')}</button>
-        <p>{errorMsg}</p>
         {rooms.map(room => (
           <div className="dashboard-element" key={room.id}>
             <a 

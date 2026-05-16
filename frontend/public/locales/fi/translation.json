@@ -36,5 +36,7 @@
     "delete-confirm" : "Oletko varma?",
     "yes" : "Kyllä",
     "no" : "Ei",
-    "Not Found" : "Ei löydetty"
+    "Not Found" : "Ei löydetty",
+    "back" : "Takaisin",
+    "delete" : "Poista"
 }

@@ -1,7 +1,7 @@
 const API_URL = "http://localhost:8000";
 
 export async function apiFetch(path, options = {}) {
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
 
   const res = await fetch(`${API_URL}${path}`, {
     ...options,

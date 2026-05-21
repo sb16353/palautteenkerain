@@ -23,10 +23,10 @@
     "room-id-empty": "Sinun täytyy syöttää huonekoodi, ennen kuin voit antaa palautetta.",
     "Log out": "Kirjaudu ulos",
     "optional-feedback-field" : "Vapaaehtoinen palaute",
-    "You can only update your rating once per 15 seconds" : "Voit päivittää palautettasi vain 15 sekunnin välein",
+    "You can only update your rating once per 15.0 seconds" : "Voit antaa palautetta 15 sekunnin välein",
     "Your Rooms": "Huoneesi",
     "Create Room" : "Luo huone",
-    "room-not-found" : "Huonetta ei löydy",
+    "room-not-found" : "Huonetta ei löytynyt",
     "room-load-error" : "Huoneita ladatessa tapahtui virhe",
     "room-create-error" : "Huoneita luodessa tapahtui virhe",
     "created" : "luotu",
@@ -38,5 +38,10 @@
     "no" : "Ei",
     "Not Found" : "Ei löydetty",
     "back" : "Takaisin",
-    "delete" : "Poista"
+    "delete" : "Poista",
+    "Room already exists" : "Huone on jo olemassa",
+    "Comments" : "Kommentit",
+    "home" : "Pääsivu",
+    "Room not owned by user" : "Huoneen omistaa eri käyttäjä",
+    "View statistics for room" : "Näytä tilastot huoneelle"
 }

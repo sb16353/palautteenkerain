@@ -22,7 +22,7 @@ def get_rooms(
 ):
     return crud.get_rooms_from_user(session, user)
 
-@router.get("/{room_id}", response_model=list[Feedback])
+@router.get("/{room_id}", response_model=tuple[float, int, list[tuple[int, str]]])
 def get_feedback(
     room_id: str,
     user: User = Depends(get_current_user),

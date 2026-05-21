@@ -1,23 +1,26 @@
 import { useNavigate } from "react-router"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next";
 
 export default function Thanks() {
     const navigate = useNavigate();
 
-    const {t, i18n} = useTranslation();
+    const { t } = useTranslation();
 
-    const [navTimer, setNavTimer] = useState(10);
+    const [navTimer, setNavTimer] = useState(15);
 
-    const decrTimerInterval = setInterval(updateTimer, 1000);
-
-    function updateTimer() {
-        setNavTimer(navTimer - 1);
-        if (navTimer < 1) { 
-            navigate("/");
-            clearInterval(decrTimerInterval);
+    useEffect(() => {
+        if (navTimer <= 0) {
+            navigate(-1);
+            return;
         }
-    }
+
+        const timerId = setTimeout(() => {
+            setNavTimer((prev) => prev - 1);
+        }, 1000);
+
+        return () => clearTimeout(timerId);
+    }, [navTimer, navigate]);
 
     return (<>
         <div id="thanks">

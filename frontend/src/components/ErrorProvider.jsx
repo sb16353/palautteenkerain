@@ -5,12 +5,19 @@ import {
     useId,
     useEffect,
 } from "react";
+import { useLocation } from "react-router";
+import { useTranslation } from "react-i18next";
 
 const ErrorContext = createContext();
 
 export function ErrorProvider({ children }) {
-    const params = new URLSearchParams(document.location.search);
-    const [errorMsg, setErrorMsg] = useState(params.get("error_msg"));
+    const { t } = useTranslation();
+
+    const location = useLocation();
+    const [errorMsg, setErrorMsg] = useState(() => {
+        const params = new URLSearchParams(location.search);
+        return t(params.get("error_msg"));
+    });
     const [visible, setVisible] = useState(true);
     const errorMsgId = useId();
 
@@ -21,6 +28,12 @@ export function ErrorProvider({ children }) {
     const FADE_LENGTH_MS = FADE_LENGTH_S * 1000;
 
     const DISAPPEAR_TIME_MS = FADE_AFTER_MS + FADE_LENGTH_MS;
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        setErrorMsg(t(params.get("error_msg")));
+        setVisible(true);
+    }, [location.search]);
 
     useEffect(() => {
         if (!errorMsg) return;

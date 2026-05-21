@@ -29,7 +29,7 @@ export default function Room() {
 
   function RatingsDisplay() {
     return (
-      <div>
+      <div style={{width: "25%"}}>
         <h3>{t('Comments')}:</h3>
         {Object.entries(headers)
           .sort((a, b) => Number(b[0]) - Number(a[0])) // sort descending
@@ -39,22 +39,26 @@ export default function Room() {
             return (
               <div key={key} style={{ marginBottom: "1rem" }}>
                 <h4>{emoji}</h4>
-                {match && <p>"{match[1]}"</p>}
+                <ul>
+                  {match && <li>"{match[1]}"</li>}
+                </ul>
               </div>
             );
           })}
       </div>
     );
   }
-  
-  if (!stats) return <p>Loading...</p>;
-  
+
   return (
-    <>
-      <h1>{t('Room')} {roomId}</h1>
-      <h3>{t('Average')}: {stats[0]}</h3>
-      <h3>{t('Votes')}: {stats[1]}</h3>
-      <RatingsDisplay/>
-    </>
+    <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "100%"}}>
+      {
+        !stats ? <p>Loading...</p> : (<>
+          <h1>{t('Room')} {roomId}</h1>
+          <h3>{t('Average')}: {stats[0]}</h3>
+          <h3>{t('Votes')}: {stats[1]}</h3>
+          <RatingsDisplay/>
+        </>)
+      }
+    </div>
   );
 }

@@ -32,7 +32,7 @@ export default function Dashboard() {
       setRooms(data);
     }
     catch(e) {
-      setErrorMsg(t(e.message | 'room-load-error'))
+      setErrorMsg(t(e.message || 'room-load-error'))
       console.log(e);
     }
     finally {
@@ -57,7 +57,7 @@ export default function Dashboard() {
       loadRooms();
     }
     catch (e) {
-      setErrorMsg(t(e.message | 'room-create-error'))
+      setErrorMsg(t(e.message || 'room-create-error'))
       console.log(e);
     }
     finally {

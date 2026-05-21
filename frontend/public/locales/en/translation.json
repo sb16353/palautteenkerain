@@ -23,7 +23,7 @@
     "room-id-empty": "You must enter a room ID to give feedback.",
     "Log out": "Log out",
     "optional-feedback-field" : "Optional feedback",
-    "You can only update your rating once per 15 seconds" : "You can only update your rating once per 15 seconds",
+    "You can only update your rating once per 15.0 seconds" : "You can only give feedback once per 15 seconds",
     "room-not-found" : "Room not found",
     "room-load-error" : "An error occurred while loading rooms",
     "room-create-error" : "An error occurred while creating a room",
@@ -35,5 +35,7 @@
     "yes" : "Yes",
     "no" : "No",
     "back" : "Back",
-    "delete" : "Delete"
+    "delete" : "Delete",
+    "home" : "Home",
+    "View statistics for room" : "View statistics for room"
 }

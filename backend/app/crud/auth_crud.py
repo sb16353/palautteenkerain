@@ -11,10 +11,13 @@ def register(username: str, password: str, session: Session):
     if user:
         raise HTTPException(status_code=400, detail="User already exists")
 
-    if len(username.strip()) < 2:
+    username = username.strip()
+    password = password.strip()
+
+    if len(username) < 2:
         raise HTTPException(status_code=400, detail="Username should be atleast 2 characters long")
     
-    if len(password.strip()) < 5:
+    if len(password) < 5:
         raise HTTPException(status_code=400, detail="Password should be atleast 5 characters long")
     
     user = User(

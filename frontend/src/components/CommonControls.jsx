@@ -6,10 +6,12 @@ import { useTranslation } from "react-i18next";
 
 export default function CommonControls() {
     const ccId = useId();
+    const homeId = useId();
+    
     const CORNER_OFFSET = "24px";
 
     const navigate = useNavigate();
-    const homeId = useId();
+    
     const { t } = useTranslation();
 
     return (<>

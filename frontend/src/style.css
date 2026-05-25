@@ -22,6 +22,10 @@ body {
     font-size: 16px;
 }
 
+pre {
+    font-family: Verdana, sans-serif;
+}
+
 .skip-link {
     position: absolute;
     left: -9999px;
@@ -51,7 +55,6 @@ a { color: var(--primary); text-decoration: underline; }
 a:focus, a:hover { outline-offset: 2px; }
 a:focus { outline: var(--focus); }
 
-/* Centered page containers (responsive and accessible) */
 #input-room-code, #thanks, #dashboard, #feedback-container {
     display: flex;
     flex-direction: column;
@@ -108,14 +111,10 @@ a:focus { outline: var(--focus); }
 input, textarea, select { font-size: 1rem; padding: 0.5rem; border: 1px solid #cbd5df; border-radius: 6px; }
 button { font-family: inherit; }
 
-/* Ensure buttons have enough hit area on small devices */
 button, .feedback-button { min-height: 44px; min-width: 44px; }
 
-/* Utility helpers */
 .center-column { display: flex; flex-direction: column; align-items: center; justify-content: center; }
 
 @media (prefers-reduced-motion: reduce) {
     .feedback-button { transition: none; }
 }
-
-/* End of accessible styles */

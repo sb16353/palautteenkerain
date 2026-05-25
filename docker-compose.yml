@@ -29,19 +29,15 @@ services:
       DB_PORT: 5432
     ports:
       - "8000:8000"
-    volumes:
-      - ./backend/app:/app
+    # Do not mount source code in production image
 
   frontend:
     build: ./frontend
     depends_on:
       - backend
     ports:
-      - "5173:5173"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    command: npm run dev -- --host
+      - "3001:80"
+    # Frontend built into static site served by nginx in image
 
 secrets:
   db_user:

@@ -14,8 +14,7 @@ export default function DeleteRoom({ roomId }) {
             await apiFetch(`/rooms/${roomId}`, { "method": "DELETE" });
         }
         catch (err) {
-            setErrorMsg(t(err.message || 'delete-failed'))    
-            console.log(err);
+            setErrorMsg(t(err.message || 'delete-failed'));   
         }
         finally {
             window.location.reload();

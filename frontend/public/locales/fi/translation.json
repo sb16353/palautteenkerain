@@ -43,5 +43,10 @@
     "Comments" : "Kommentit",
     "home" : "Pääsivu",
     "Room not owned by user" : "Huoneen omistaa eri käyttäjä",
-    "View statistics for room" : "Näytä tilastot huoneelle"
+    "View statistics for room" : "Näytä tilastot huoneelle",
+    "very-satisfied" : "Erittäin tyytyväinen",
+    "satisfied" : "Tyytyväinen",
+    "neutral" : "Neutraali",
+    "dissatisfied" : "Tyytymätön",
+    "very-dissatisfied" : "Erittäin tyytymätön"
 }

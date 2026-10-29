@@ -2,6 +2,8 @@
 
 ## Production
 
+Full deployment runbook: [DEPLOYMENT.md](DEPLOYMENT.md)
+
 Run stack with:
 
 ```powershell

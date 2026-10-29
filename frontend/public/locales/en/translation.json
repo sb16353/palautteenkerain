@@ -37,5 +37,10 @@
     "back" : "Back",
     "delete" : "Delete",
     "home" : "Home",
-    "View statistics for room" : "View statistics for room"
+    "View statistics for room" : "View statistics for room",
+    "very-satisfied" : "Very Satisfied",
+    "satisfied" : "Satisfied",
+    "neutral" : "Neutral",
+    "dissatisfied" : "Dissatisfied",
+    "very-dissatisfied" : "Very Dissatisfied"
 }

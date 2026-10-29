@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router"
 import { apiFetch } from "../api/client";
 import { useEffect, useState, useId, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { useError } from "../components/ErrorContext";
+import { useError } from "../components/ErrorProvider";
 
 export default function FeedbackView() {
   const navigate = useNavigate();

@@ -43,10 +43,17 @@ export default function Dashboard() {
   async function createRoom() {
     if (operationInProgress) return;
 
-    setOperationInProgress(true);
+    //setOperationInProgress(true);
 
     try {
       const roomId = validator.trim(roomIdRef.current.value).replace(/\s+/g, "_").toLowerCase();
+
+      if (roomId.length === 0) {
+        setErrorMsg(t('room-id-required'));
+        return;
+      }
+
+      setOperationInProgress(true);
 
       roomIdRef.current.value = "";
 
@@ -89,7 +96,12 @@ export default function Dashboard() {
               {room.id}
             </a> 
             &nbsp;
-            <DeleteRoom roomId={room.id}/>
+            <DeleteRoom
+              roomId={room.id}
+              onDeleted={(deletedRoomId) => {
+                setRooms((prev) => prev.filter((r) => r.id !== deletedRoomId));
+              }}
+            />
           </div>
         ))}
       </div>

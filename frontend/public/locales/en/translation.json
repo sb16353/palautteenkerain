@@ -21,6 +21,7 @@
     "Password should be atleast 5 characters long": "Password should be atleast five characters long",
     "Dashboard": "Manage rooms",
     "room-id-empty": "You must enter a room ID to give feedback.",
+    "room-id-required": "Room ID cannot be blank.",
     "Log out": "Log out",
     "optional-feedback-field" : "Optional feedback",
     "You can only update your rating once per 15.0 seconds" : "You can only give feedback once per 15 seconds",

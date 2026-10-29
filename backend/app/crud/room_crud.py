@@ -1,5 +1,5 @@
 from sqlmodel import Session, select
-from db.models import Room, User
+from db.models import Room, User, Feedback
 from fastapi import HTTPException
 from crud.feedback_crud import get_room_stats
 
@@ -51,5 +51,13 @@ def delete_room(
     user: User
 ):
     room = get_room(session, user, room_id)
+
+    feedback_rows = session.exec(
+        select(Feedback).where(Feedback.room_id == room_id)
+    ).all()
+
+    for feedback in feedback_rows:
+        session.delete(feedback)
+
     session.delete(room)
     session.commit()

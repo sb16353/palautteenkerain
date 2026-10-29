@@ -1,23 +1,20 @@
 import { useTranslation } from "react-i18next";
 import { useState } from "react"
 import { apiFetch } from "../api/client";
-import { useSearchParams } from "react-router";
 import { useError } from "./ErrorProvider";
 
-export default function DeleteRoom({ roomId }) {
+export default function DeleteRoom({ roomId, onDeleted }) {
     const [deletionStage, setDeletionStage] = useState(0);
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const {setErrorMsg} = useError();
 
     async function deleteRoom() {
         try {
             await apiFetch(`/rooms/${roomId}`, { "method": "DELETE" });
+            onDeleted?.(roomId);
         }
         catch (err) {
             setErrorMsg(t(err.message || 'delete-failed'));   
-        }
-        finally {
-            window.location.reload();
         }
     }
 

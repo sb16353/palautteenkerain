@@ -34,12 +34,6 @@ Create secrets files in `secrets/`:
 - `db_name.txt`
 - `secret_key.txt`
 
-Generate strong secret key example:
-
-```powershell
-[guid]::NewGuid().ToString("N") + [guid]::NewGuid().ToString("N")
-```
-
 ## 3. Build and Start
 
 Build images and start all services:
@@ -122,7 +116,6 @@ Get-Content backup.sql | docker compose exec -T db psql -U "$(Get-Content .\secr
 
 - Do not expose port `5432` to internet unless required.
 - Restrict firewall rules to trusted IPs.
-- Keep `secrets/` out of version control.
 - Rotate database credentials and `secret_key` regularly.
 - Use HTTPS with reverse proxy (for example nginx, Traefik, or cloud load balancer) in front of frontend/backend.
 - Add monitoring and alerting for container restarts and high resource usage.
